@@ -32,7 +32,10 @@ public class CalculatorTest extends JFrame implements ActionListener {
     add(panel, BorderLayout.CENTER);
         setVisible(true);
     }
-
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String command = e.getActionCommand();
+    }
 
     public static void main(String[] args) {
         var frame = new CalculatorTest();
