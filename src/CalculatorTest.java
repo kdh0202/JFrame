@@ -5,7 +5,8 @@ import javax.swing.*;
 
 public class CalculatorTest extends JFrame implements ActionListener {
     private JTextField display;
-
+    private double num1, num2, result;
+    private char operator;
 
     public CalculatorTest() {
         setTitle("계산기");
