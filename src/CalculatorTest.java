@@ -4,44 +4,38 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class CalculatorTest extends JFrame implements ActionListener {
-    private JTextField num1Field;
-    private JTextField num2Field;
-    private JLabel resultLabel;
-    private JComboBox<String> operatorComboBox;
+    private JTextField display;
+
 
     public CalculatorTest() {
         setTitle("계산기");
         setSize(400, 500);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new FlowLayout());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
 
-        num1Field = new JTextField(5);
-        add(num1Field);//GPT사용
+        display = new JTextField();
+        display.setEditable(false);
+        add(display, BorderLayout.NORTH);
 
-        String[] operators = {"+", "-", "*", "/"};
-        operatorComboBox = new JComboBox<>(operators);
-        add(operatorComboBox);  //GPT 사용
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(4,4));
 
+        String[] buttons ={"7","8","9","+","4","5","6","-","1","2","3","*","0","C","=","/"};
 
-        num2Field = new JTextField(5);
-        add(num2Field);
+        for (String text : buttons) {
+        JButton button = new JButton(text);
+        button.addActionListener(this);
+        panel.add(button);
+        }
 
-        JButton calculateButton = new JButton("=");
-        calculateButton.addActionListener(this);
-        add(calculateButton);
-
-        resultLabel = new JLabel("결과: ");
-        add(resultLabel);
-
+    add(panel, BorderLayout.CENTER);
+        setVisible(true);
     }
+
+
     public static void main(String[] args) {
         var frame = new CalculatorTest();
 
         frame.setVisible(true);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
     }
 }
